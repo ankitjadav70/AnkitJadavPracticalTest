@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ankitjadavpracticaltest.R
 import com.example.ankitjadavpracticaltest.data.entity.CustomRate
-import com.example.ankitjadavpracticaltest.data.entity.Rates
 import com.example.ankitjadavpracticaltest.databinding.ItemRateBinding
 
 class ExchangeRateAdapter(private val rateList : ArrayList<CustomRate>) : RecyclerView.Adapter<ExchangeRateAdapter.RateViewHolder>() {

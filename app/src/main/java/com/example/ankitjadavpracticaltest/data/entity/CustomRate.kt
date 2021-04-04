@@ -4,7 +4,7 @@ import java.util.*
 
 class CustomRate
 {
-    var currency: String=""
-    var rate : String=""
+    var currency: String?=""
+    var rate : String?=""
 }
 

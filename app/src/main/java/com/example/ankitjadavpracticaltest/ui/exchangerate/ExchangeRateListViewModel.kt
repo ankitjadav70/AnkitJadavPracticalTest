@@ -56,28 +56,13 @@ class ExchangeRateListViewModel(private val exchangeRateRepo: ExchangeRateRepo) 
     }
 
 
-    fun convertDataClassToList(it: ExchangeRate): ArrayList<CustomRate> {
+    fun convertMapToList(it: ExchangeRate): ArrayList<CustomRate> {
         val rateList = ArrayList<CustomRate>()
-        val jsonString = Gson().toJson(it.rates)
-        try {
-            val json = JSONObject(jsonString)
-            val iter: Iterator<String> = json.keys()
-
-            while (iter.hasNext()) {
-                val rate: CustomRate = CustomRate()
-                val key = iter.next()
-                rate.currency = key
-                try {
-                    val value: Any = json.get(key)
-                    rate.rate = value.toString()
-                } catch (e: JSONException) {
-                    rate.rate = "0"
-                }
-                rateList.add(rate)
-            }
-        } catch (e: JSONException) {
-            // TODO Auto-generated catch block
-            e.printStackTrace()
+        for(key in it.rates.keys) {
+            val rate: CustomRate = CustomRate()
+            rate.currency=key
+            rate.rate=it.rates[key]
+            rateList.add(rate)
         }
         return rateList
     }
